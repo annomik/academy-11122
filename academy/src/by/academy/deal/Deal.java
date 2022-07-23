@@ -6,76 +6,93 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Deal {
-	
+
 	private User seller;
 	private User buyer;
 	private LocalDateTime buyTime = LocalDateTime.now();
-	private Product [] basket;
+	private Product[] basket;
 	private LocalDate deadlineDate = LocalDate.now().plusDays(10);
-	
-	private int index = 0;		
-	
+
+	private int index = 0;
+
 	public Deal() {
 		super();
 		this.basket = new Product[5];
 	}
-	    	
+
 	public void grow() {
-		int newLength = (int) (basket.length == 0 ? 1 : basket.length*1.5);
-		Product [] newBasket = new Product[newLength];
+		int newLength = (int) (basket.length == 0 ? 1 : basket.length * 1.5);
+		Product[] newBasket = new Product[newLength];
 		System.arraycopy(basket, 0, newBasket, 0, basket.length);
 		basket = newBasket;
 	}
-	
+
 	public void addProduct(Product product) {
 		if (index == basket.length) {
 			grow();
-		} 
-			basket[index++] = product; 
-			System.out.println("--- Продукт добавлен в корзину. ---");
 		}
-	
+		basket[index++] = product;
+		System.out.println("--- Продукт добавлен в корзину. ---");
+	}
+
 	public Product getProduct(int productIndex) {
 		return basket[productIndex];
 	}
-	
+
 	public void removeProduct(int index) {
-		 int newLenght = (int) (basket.length == 0 ? 1 : basket.length - 1);
-	        Product[] newBasket = new Product[newLenght];
-	        System.arraycopy(basket, 0, newBasket, 0, index);
-	        System.arraycopy(basket, index + 1, newBasket, index, basket.length - index - 1);
-	        basket = newBasket;
+		int newLenght = (int) (basket.length == 0 ? 1 : basket.length - 1);
+		Product[] newBasket = new Product[newLenght];
+		System.arraycopy(basket, 0, newBasket, 0, index);
+		System.arraycopy(basket, index + 1, newBasket, index, basket.length - index - 1);
+		basket = newBasket;
 	}
-		
 
 	public void BillPrint(Deal deal) {
-		System.out.println("Покупатель: " + deal.buyer.getName() + ". Сумма в кошелке: " + deal.buyer.getMoney());
-		System.out.println("Тел.: " + deal.buyer.getPhone() + ". Email: " + deal.buyer.getEmail());
-		if (seller.getMoney() < calcFullPrice(basket)){
-	            System.out.println("У Вас недостаточно средств для покупки");
-	            return;
-	    } else
-	     {	             
-		System.out.println("------------ Чек -----------");
-		for (int i = 0; i < deal.basket.length; i++) {
-			if (deal.basket[i] != null) {
-			System.out.println((i+1)+"."+deal.basket[i].getName() + " -- стоимость: " +
-								 deal.basket[i].calcFinalPrice(basket[i]) + " руб.");
-				}
-		}
 		System.out.println("-----------------------------");
-		System.out.println("Итого: " + calcFullPrice(deal.basket)+ " руб.");
-		System.out.println("Время покупки: "+ buyTime);
-		System.out.println("Deadline: "+deal.deadlineDate);
-		System.out.println("---- Спасибо за покупку! ----");
-	    }
+		System.out.println("Покупатель: " + deal.buyer.getName() + ". Сумма в кошелке: " + deal.buyer.getMoney()+
+				"Тел.: " + deal.buyer.getPhone() + ". Email: " + deal.buyer.getEmail());
 		
-		deal.seller.setMoney(deal.seller.getMoney() + calcFullPrice(basket));
-	    deal.buyer.setMoney(deal.buyer.getMoney() - calcFullPrice(basket));
-	    System.out.println("У вас осталось: " +deal.buyer.getMoney()+ " руб.");
-	}	
+		if (seller.getMoney() < calcFullPrice(basket)) {
+			System.out.println("У Вас недостаточно средств для покупки");
+			return;
+		} else {
+			System.out.println("------------ Чек -----------");
+			for (int i = 0; i < deal.basket.length; i++) {
+				if (deal.basket[i] != null) {
+					System.out.println((i + 1) + "." + deal.basket[i].getName() + " -- стоимость: "
+							+ deal.basket[i].calcFinalPrice(basket[i]) + " руб.");
+				}
+			}
+			System.out.println("-----------------------------");
+			System.out.println("Итого: " + calcFullPrice(deal.basket) + " руб.");
+			System.out.println("Время покупки: " + buyTime);
+			System.out.println("Deadline: " + deal.deadlineDate);
+			System.out.println("---- Спасибо за покупку! ----");
+		}
 
-	public double calcFullPrice(Product [] basket) {
+		deal.seller.setMoney(deal.seller.getMoney() + calcFullPrice(basket));
+		deal.buyer.setMoney(deal.buyer.getMoney() - calcFullPrice(basket));
+		System.out.println("У вас осталось: " + deal.buyer.getMoney() + " руб.");
+	}
+
+	public void printBasket(Deal deal) {
+		if (calcFullPrice(deal.basket) == 0) {
+			System.out.println(" Ваша корзина пуста");
+		} else {
+			System.out.println("------------Ваша корзина покупок -----------");
+			for (int i = 0; i < deal.basket.length; i++) {
+				if (deal.basket[i] != null) {
+					System.out.println((i + 1) + "." + deal.basket[i].getName() + " -- стоимость: "
+							+ deal.basket[i].calcFinalPrice(basket[i]) + " руб.");
+				}
+			}
+			System.out.println("-----------------------------");
+			System.out.println("Итого: " + calcFullPrice(deal.basket) + " руб.");
+			System.out.println("-----------------------------");
+		}
+	}
+
+	public double calcFullPrice(Product[] basket) {
 		double fullPrice = 0;
 		for (int i = 0; i < basket.length; i++) {
 			if (basket[i] != null) {
@@ -83,9 +100,8 @@ public class Deal {
 			}
 		}
 		return fullPrice;
-	}	
+	}
 
-	
 	public Deal(User seller, User buyer, LocalDateTime buyTime, Product[] basket, int index) {
 		super();
 		this.seller = seller;
@@ -100,7 +116,7 @@ public class Deal {
 		this.seller = seller;
 		this.buyer = buyer;
 		this.basket = basket;
-		
+
 	}
 
 	public User getSeller() {
@@ -126,12 +142,11 @@ public class Deal {
 	public void setBuyTime(LocalDateTime buyTime) {
 		this.buyTime = buyTime;
 	}
-		
+
 	public Product[] getBasket() {
 		return basket;
 	}
 
-	
 	public void setBasket(Product[] basket) {
 		this.basket = basket;
 	}
@@ -143,7 +158,7 @@ public class Deal {
 	public void setIndex(int index) {
 		this.index = index;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Deal [seller=" + seller + ", buyer=" + buyer + ", buyTime=" + buyTime + ", basket="
@@ -173,9 +188,4 @@ public class Deal {
 				&& index == other.index && Objects.equals(seller, other.seller);
 	}
 
-	
-	
 }
-	
-	
-	
