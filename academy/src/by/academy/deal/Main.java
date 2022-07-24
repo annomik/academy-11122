@@ -148,9 +148,11 @@ public class Main {
 		}
 
 		deal.printBasket(deal);
-
-		System.out.println("Нажмите 1 - чтобы оплатить заказ.");
+		
 		System.out.println("Нажмите 0 - чтобы отменить заказ.");
+		System.out.println("Нажмите 1 - чтобы оплатить заказ.");
+		System.out.println("Нажмите 2 - чтобы удалить товар из заказа.");
+		
 		if (sc.hasNextInt()) {
 			number = sc.nextInt();
 			switch (number) {
@@ -158,9 +160,14 @@ public class Main {
 				System.out.println("Заказ отменен.");
 				break;
 			case 1:
-				
 				deal.BillPrint(deal);
 				break;
+			case 2:
+				System.out.println("Введите позицию товара, который нужно удалить:");
+				int m = sc.nextInt();
+				int index = m-1;
+				deal.removeProduct(index);
+				break;	
 			default:
 				System.out.println("Некорректно введенные данные!");
 			}
@@ -168,6 +175,9 @@ public class Main {
 			System.out.println("Некорректно введенные данные!");
 		}
 
+		deal.BillPrint(deal);
+		
+		
 		sc.close();
 
 	}

@@ -49,9 +49,9 @@ public class Deal {
 
 	public void BillPrint(Deal deal) {
 		System.out.println("-----------------------------");
-		System.out.println("Покупатель: " + deal.buyer.getName() + ". Сумма в кошелке: " + deal.buyer.getMoney()+
-				"Тел.: " + deal.buyer.getPhone() + ". Email: " + deal.buyer.getEmail());
-		
+		System.out.println("Покупатель: " + deal.buyer.getName() + ". Сумма в кошелке: " + deal.buyer.getMoney()
+				+ "Тел.: " + deal.buyer.getPhone() + ". Email: " + deal.buyer.getEmail());
+
 		if (seller.getMoney() < calcFullPrice(basket)) {
 			System.out.println("У Вас недостаточно средств для покупки");
 			return;
@@ -149,6 +149,14 @@ public class Deal {
 
 	public void setBasket(Product[] basket) {
 		this.basket = basket;
+	}
+
+	public LocalDate getDeadlineDate() {
+		return deadlineDate;
+	}
+
+	public void setDeadlineDate(LocalDate deadlineDate) {
+		this.deadlineDate = deadlineDate;
 	}
 
 	public int getIndex() {
