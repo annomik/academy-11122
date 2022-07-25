@@ -49,8 +49,8 @@ public class Deal {
 
 	public void BillPrint(Deal deal) {
 		System.out.println("-----------------------------");
-		System.out.println("Покупатель: " + deal.buyer.getName() + ". Сумма в кошелке: " + deal.buyer.getMoney()
-				+ "Тел.: " + deal.buyer.getPhone() + ". Email: " + deal.buyer.getEmail());
+		System.out.println("Покупатель: --" + deal.buyer.getName() + "-- Сумма в кошельке: " + deal.buyer.getMoney()
+				+ "руб. Тел.: " + deal.buyer.getPhone() + " Email: " + deal.buyer.getEmail());
 
 		if (seller.getMoney() < calcFullPrice(basket)) {
 			System.out.println("У Вас недостаточно средств для покупки");
