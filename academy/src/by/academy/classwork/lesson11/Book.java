@@ -3,10 +3,19 @@ package by.academy.classwork.lesson11;
 public class Book implements Printable {
 
 	private String name;
+	
+	public static void printBooks(Printable[] bookMagazine) {
+
+		for (Printable p : bookMagazine) {
+			if (p instanceof Book) {
+				p.print();
+			}
+		}
+	}
 
 	@Override
 	public void print() {
-		System.out.println("Print book " + name);
+		System.out.println("Print book: " + name);
 	}
 
 	@Override
