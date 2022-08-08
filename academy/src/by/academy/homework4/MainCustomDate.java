@@ -16,17 +16,16 @@ public class MainCustomDate {
 		
 		System.out.println("Введите дату в формате dd-MM-yyyy: ");
 		String dateFromConsole = sc.nextLine();
-		while (true) {
-			Date1 datecheck = new Date1();
-			if (datecheck.check(dateFromConsole)) {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-				LocalDate date1 = LocalDate.parse(dateFromConsole, formatter);
-			} else {
-				System.out.println("Некорректно введенные данные! Повторите ввод.");
-			}		
+//		while (true) {
+//			Date1 datecheck = new Date1();
+//			if (datecheck.check(dateFromConsole)) {
+//				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//				LocalDate date1 = LocalDate.parse(dateFromConsole, formatter);
+//			} else {
+//				System.out.println("Некорректно введенные данные! Повторите ввод.");
+//			}		
 				
-		
-		customDate.findDay(date1);
+		customDate.findDay(dateFromConsole);
 		
 		sc.close();	
 	}

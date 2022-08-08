@@ -8,16 +8,12 @@ import java.util.Scanner;
 public class CustomDate {
 
 	public Year year;
-//	public Month month;
+	public Month month;
 
-//	Date datecheck = new Date();
+	Date1 datecheck = new Date1();
 
 	public CustomDate() {
 		super();
-
-		// Year year = new Year();
-		// this.year = year;
-
 	}
 
 	public CustomDate(String string) {
@@ -26,15 +22,17 @@ public class CustomDate {
 		this.year = year;
 
 	}
+	
+	
 
 	class Year {
 		int year;
 
-		public boolean leapYear() {
-			if (year % 4 == 0) {
-				return true;
-			} else
-				return false;
+		public void leapYear() {
+			if ((year % 4 != 0) || ((year % 100 == 0)&& (year % 400 != 0))) {
+				System.out.println("Не високосный");
+			} else 
+				System.out.println("Високосный");
 		}
 	}
 
@@ -42,12 +40,12 @@ public class CustomDate {
 
 	}
 
-	public void findDay(LocalDate date1) {
-//		while (true) {
-//
-//			if (datecheck.check(dateFromConsole)) {
-//				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//				LocalDate date1 = LocalDate.parse(dateFromConsole, formatter);
+	public void findDay(String dateFromConsole) {
+		while (true) {
+
+			if (datecheck.check(dateFromConsole)) {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				LocalDate date1 = LocalDate.parse(dateFromConsole, formatter);
 
 			//	System.out.println("День: " + date1.getDayOfWeek());
 				DayOfWeek day = date1.getDayOfWeek();
@@ -78,9 +76,9 @@ public class CustomDate {
 				}
 
 				break;
-//			} else {
-//				System.out.println("Некорректно введенные данные! Повторите ввод.");
-//			}
+			} else {
+				System.out.println("Некорректно введенные данные! Повторите ввод.");
+			}
 		}
 
 	}
