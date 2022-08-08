@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import by.academy.deal.Date;
+
 
 public class MainCustomDate {
 
@@ -26,6 +26,8 @@ public class MainCustomDate {
 //			}		
 				
 		customDate.findDay(dateFromConsole);
+		
+		customDate.countDaysBetween(customDate);
 		
 		sc.close();	
 	}
