@@ -4,32 +4,36 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-
-
 public class MainCustomDate {
 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		CustomDate customDate = new CustomDate();  
-				
+		String dateFromConsole; 
+		LocalDate date = null;		
+						
+		while (true) {
+			System.out.println("Введите дату в формате dd-MM-yyyy: ");
+			dateFromConsole = sc.nextLine();
+			Date1 datecheck = new Date1();
+			if (datecheck.check(dateFromConsole)) {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				date = LocalDate.parse(dateFromConsole, formatter);
+				break;
+			} else {
+				System.out.println("Некорректно введенные данные! Повторите ввод.");
+			}
+			sc.close();	
+		}	
+		CustomDate customDate = new CustomDate(dateFromConsole); 
+		customDate.findDay(date);
 		
-		System.out.println("Введите дату в формате dd-MM-yyyy: ");
-		String dateFromConsole = sc.nextLine();
-//		while (true) {
-//			Date1 datecheck = new Date1();
-//			if (datecheck.check(dateFromConsole)) {
-//				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//				LocalDate date1 = LocalDate.parse(dateFromConsole, formatter);
-//			} else {
-//				System.out.println("Некорректно введенные данные! Повторите ввод.");
-//			}		
-				
-		customDate.findDay(dateFromConsole);
+		customDate.leapYear();
+					
+		System.out.println(customDate.dateToLocalDate());
 		
-		customDate.countDaysBetween(customDate);
+		customDate.countDaysBetween();
 		
-		sc.close();	
 	}
-
+	
 }

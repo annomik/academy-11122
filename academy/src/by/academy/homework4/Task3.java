@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Task3<T> {
 
 	private T[] arr;
+	private int index = 0;
 	private int size;
 
 	public Task3(int size) {
@@ -15,35 +16,38 @@ public class Task3<T> {
 
 	public Task3() {
 		super();
-		this.arr = (T[]) new Object[16];
+		this.arr = (T[])new Object[16];
 	}
 
 	public T getFirst() {
 		return (T) arr[0];
 	}
+	
+	public T getLast() {
+		return (T) arr[arr.length - 1]; 
+	}
 
 	public void add(T obj) {
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] == null) {
-				arr[i] = obj;
-			} else {
+	
+		if (index == arr.length) {
+			
 				int newLength = (int) (arr.length == 0 ? 1 : arr.length * 1.5);
 				T[] newArr = Arrays.copyOf(arr, newLength);
 				newArr[arr.length] = obj;
 				arr = newArr;
-
-			}
+		} else {
+			arr[index++] = obj;
+			
 		}
 	}
 
-	public T getByIndex(int i) {
+	public  T getByIndex(int i) {
+		
 		return (T) arr[i];
+		
 	}
 
-	public T getLast() {
-
-		return (T) arr[arr.length - 1]; 
-	}
+	
 
 	public int showCapacity() {
 		return arr.length;
@@ -62,9 +66,8 @@ public class Task3<T> {
 			}
 		}
 	}
+	
 	// 6) вывод индекса последнего заполненого элемента (не путать с размерностью)
-	// ??
-
 	public int findIndex() {
 		int i = 0;
 		while ((i < arr.length) && (arr[i] != null)) {
