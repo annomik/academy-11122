@@ -148,7 +148,7 @@ public class CustomDate {
 	
 		long countDays = (long) (ChronoUnit.DAYS.between( dateToLocalDate(), LocalDate.now() ));
 		System.out.println(dateToLocalDate());
-		System.out.println("Количество дней : " + countDays);
+		System.out.println("Прошло дней до сегодняшнего дня: " + countDays);
 		
 	}
 
