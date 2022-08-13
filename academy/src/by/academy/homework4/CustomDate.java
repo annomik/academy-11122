@@ -1,7 +1,9 @@
 package by.academy.homework4;
 
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
 public class CustomDate {
@@ -26,7 +28,7 @@ public class CustomDate {
 	class Year {
 		private int year;
 
-		public Year(int parseInt) {
+		public Year(int year) {
 			super();
 			this.year = year;
 		}
@@ -143,10 +145,11 @@ public class CustomDate {
 	}
  
 	public void countDaysBetween() {
-		int countDays = (int) (ChronoUnit.DAYS.between( dateToLocalDate(), LocalDate.now() ));
-
+	
+		long countDays = (long) (ChronoUnit.DAYS.between( dateToLocalDate(), LocalDate.now() ));
+		System.out.println(dateToLocalDate());
 		System.out.println("Количество дней : " + countDays);
-
+		
 	}
 
 }

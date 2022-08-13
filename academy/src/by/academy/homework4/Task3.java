@@ -22,32 +22,29 @@ public class Task3<T> {
 	public T getFirst() {
 		return (T) arr[0];
 	}
-	
+
 	public T getLast() {
-		return (T) arr[arr.length - 1]; 
+		return (T) arr[arr.length - 1];
 	}
 
 	public void add(T obj) {
-	
+
 		if (index == arr.length) {
-			
-				int newLength = (int) (arr.length == 0 ? 1 : arr.length * 1.5);
-				T[] newArr = Arrays.copyOf(arr, newLength);
-				newArr[arr.length] = obj;
-				arr = newArr;
+
+			int newLength = (int) (arr.length == 0 ? 1 : arr.length * 1.5);
+			T[] newArr = Arrays.copyOf(arr, newLength);
+			newArr[arr.length] = obj;
+			arr = newArr;
 		} else {
 			arr[index++] = obj;
-			
+
 		}
 	}
 
-	public  T getByIndex(int i) {
-		
+	public T getByIndex(int i) {
 		return (T) arr[i];
-		
-	}
 
-	
+	}
 
 	public int showCapacity() {
 		return arr.length;
@@ -55,26 +52,28 @@ public class Task3<T> {
 
 	public void remove(int i) {
 		arr[i] = null;
-	}
-
-	public void remove(T obj) {
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] == obj) {
-				arr[i] = null;
-			} else {
-				System.out.println("Нет такого значения");
-			}
+		for (int j = i; j < arr.length-1; j++ ) {
+			arr[j] = arr[j+1]; 
 		}
 	}
-	
-	// 6) вывод индекса последнего заполненого элемента (не путать с размерностью)
+
+	public void removeValue(T obj) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == obj) {
+				remove(i);
+				break;
+			} 			
+				}
+		System.out.println("Нет такого значения");
+	}
+
+// 6) вывод индекса последнего заполненого элемента (не путать с размерностью)
 	public int findIndex() {
 		int i = 0;
 		while ((i < arr.length) && (arr[i] != null)) {
 			i++;
 		}
-		return i;
-
+		return --i;
 	}
 
 	@Override
@@ -103,6 +102,4 @@ public class Task3<T> {
 		return Arrays.deepEquals(arr, other.arr) && size == other.size;
 	}
 
-	
-	
 }

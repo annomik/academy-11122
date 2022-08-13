@@ -27,12 +27,11 @@ public class MainCustomDate {
 		}	
 		CustomDate customDate = new CustomDate(dateFromConsole); 
 		customDate.findDay(date);
-		
+				
 		customDate.leapYear();
-					
-		System.out.println(customDate.dateToLocalDate());
-		
+				
 		customDate.countDaysBetween();
+		
 		
 	}
 	
