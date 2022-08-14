@@ -23,7 +23,7 @@ public class MainTask3 {
 		System.out.println(array);
 		System.out.println("Последний заполненный элемент. Индекс: " + array.findIndex());
 		
-		array.removeValue(10);
+		array.removeValue(112);
 							
 		System.out.println(array);
 	

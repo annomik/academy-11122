@@ -16,7 +16,7 @@ public class Task3<T> {
 
 	public Task3() {
 		super();
-		this.arr = (T[])new Object[16];
+		this.arr = (T[]) new Object[16];
 	}
 
 	public T getFirst() {
@@ -52,8 +52,8 @@ public class Task3<T> {
 
 	public void remove(int i) {
 		arr[i] = null;
-		for (int j = i; j < arr.length-1; j++ ) {
-			arr[j] = arr[j+1]; 
+		for (int j = i; j < arr.length - 1; j++) {
+			arr[j] = arr[j + 1];
 		}
 	}
 
@@ -62,9 +62,12 @@ public class Task3<T> {
 			if (arr[i] == obj) {
 				remove(i);
 				break;
-			} 			
-				}
-		System.out.println("Нет такого значения");
+			} else {
+				System.out.println("Нет такого значения: " + obj);
+				break;
+			}
+		}
+		
 	}
 
 // 6) вывод индекса последнего заполненого элемента (не путать с размерностью)
