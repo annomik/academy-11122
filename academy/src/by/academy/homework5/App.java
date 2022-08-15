@@ -3,9 +3,11 @@ package by.academy.homework5;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -38,13 +40,24 @@ public class App {
 			System.out.println("Array is to small, expand the array");
 		}
 	
-// Задача 5. 		Можно писать все в main. Не нужно создавать новых классов.
+//  Задача 5. Можно писать все в main. Не нужно создавать новых классов.
 //		Имеется текст. Следует составить для него частотный словарь:
-//		Создать Map<Character, Integer> для символов, в который мы заносим символ и его количество.
+//		Создать Map<Character, Integer> для символов,
+//   в который мы заносим символ и его количество.
+				
+		Map<Character, Integer> dictionary = new HashMap<>();
+		String text = "Создать Map<Character, Integer> для символов,// в который мы заносим символ и его количество.";
 		
+		char[] textToArray = text.toCharArray();
 		
-		
-	
+		for (char c : textToArray) {
+			int count = 1;
+			if (dictionary.get(c) != null) {
+				count = dictionary.get(c) + 1;
+			}
+			dictionary.put(c, count);
+		}
+	System.out.println(dictionary);
 	}
 
 //  Задача 1.Напишите метод, который на вход получает коллекцию объектов, а возвращает коллекцию уже без дубликатов.
