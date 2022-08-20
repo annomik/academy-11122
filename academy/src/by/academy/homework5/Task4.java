@@ -3,6 +3,7 @@ package by.academy.homework5;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class Task4 {
 
@@ -13,10 +14,11 @@ public class Task4 {
 // Найти самую высокую оценку с использованием итератора
 
 		List<Integer> arrList = new ArrayList<>();
-
+		Random random = new Random();
 		for (int i = 0; i < 10; i++) {
-			int a = (int) (Math.random() * 10 + 1);
-			arrList.add(i, new Integer(a));
+			int a = random.nextInt(11);
+			arrList.add(i, a);
+
 		}
 
 		System.out.println(arrList);

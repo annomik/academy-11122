@@ -11,25 +11,37 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import by.academy.homework4.MainIterator;
+
 public class App {
 
 	public static void main(String[] args) {
 		List<String> list1 = List.of("a", "b", "c", "d", "a", "d", "e", "f", "c", "a");
 		getCollectionWithoutDuplicates(list1);
 
-//		List<Integer> arrayList = new ArrayList<>();
-//		addList(arrayList);
-//		chooseElement(arrayList);
-//		System.out.println("-----------------------------------------------");
-//		
-//		List<Integer> linkedList = new LinkedList<>();
-//		addList(linkedList);
-//		chooseElement(linkedList);
-
+		Integer [][] twoArray = {{1,7,33,17}, {2,0,11,12}, {3,44,2,3}};
+		
+		Iterator2<Integer> iterator2 = new Iterator2<>(twoArray);
+		
+		while (iterator2.hasNext()) {
+			Integer element = iterator2.next();
+			System.out.println("Element: " + element); 		
+		}
+		
+		List<Integer> arrayList = new ArrayList<>();
+		addList(arrayList);
+		chooseElement(arrayList);
+		System.out.println("-----------------------------------------------");
+		
+		List<Integer> linkedList = new LinkedList<>();
+		addList(linkedList);
+		chooseElement(linkedList);
+		
+		System.out.println(" ");
 		
 //		Задача 6. Попробовать добавить в массив int на 8 элементов 10 чисел. Обернуть в try/catch, словить ArrayIndexOutOfBoundsException
 //		и вывести на экран сообщение: "Array is to small, expand the array".
-		System.out.println("-----------------------------------------------");
+				
 		int numArray[] = new int[8];
 		try {
 			for (int i = 0; i < 10; i++) {
@@ -37,13 +49,12 @@ public class App {
 			}
 		}	
 		catch (ArrayIndexOutOfBoundsException exc) {
+			System.out.print("Task 6. ");
 			System.out.println("Array is to small, expand the array");
 		}
 	
-//  Задача 5. Можно писать все в main. Не нужно создавать новых классов.
-//		Имеется текст. Следует составить для него частотный словарь:
-//		Создать Map<Character, Integer> для символов,
-//   в который мы заносим символ и его количество.
+//  Задача 5. Имеется текст. Следует составить для него частотный словарь:
+//	 Создать Map<Character, Integer> для символов,  в который мы заносим символ и его количество.
 				
 		Map<Character, Integer> dictionary = new HashMap<>();
 		String text = "Создать Map<Character, Integer> для символов,// в который мы заносим символ и его количество.";
@@ -67,6 +78,7 @@ public class App {
 		for (Object o : set1) {
 			System.out.print(o + " ");
 		}
+		System.out.println(" ");
 		return;
 	}
 
@@ -85,7 +97,7 @@ public class App {
 		System.out.println(LocalDateTime.now());
 		for (int i = 0; i < 100_000; i++) {
 			int a = random.nextInt(1000_000);
-			System.out.print(list.get(a) + " ");   // "i = " + i + " "+
+			System.out.print(list.get(a) + " ");   
 			if (i % 1000 == 0) {
 				System.out.println("");
 			}
