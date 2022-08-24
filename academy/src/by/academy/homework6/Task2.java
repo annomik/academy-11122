@@ -24,7 +24,6 @@ public class Task2 {
 
 			int x;
 			while ((x = fileIn.read()) != -1) {
-				
 				if ((char) x != ' ') {
 					fileOut.write(x);
 				}
