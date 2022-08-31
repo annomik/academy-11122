@@ -32,6 +32,7 @@ public class Task1 {
 				count = 1;
 			}
 		}
+		
 		newStr.append(lastLetter).append(count);
 	
 		String resultStr = newStr.toString();
