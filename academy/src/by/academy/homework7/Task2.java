@@ -53,9 +53,9 @@ public class Task2 {
 			decFieldLogin.set(user1, "gmgmmgmg");
 			System.out.println(decFieldLogin.get(user1));
 			
-			Method methodForToString = userClass.getDeclaredMethod("toString");
+			Method methodForToString = userClass.getMethod("toString");
 			methodForToString.setAccessible(true);
-			methodForToString.invoke(user1);
+			System.out.println(methodForToString.invoke(user1));
 			
 		} catch (NoSuchMethodException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
