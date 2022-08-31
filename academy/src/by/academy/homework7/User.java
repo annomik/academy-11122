@@ -22,6 +22,14 @@ public class User extends Person {
 		
 	}
 	
+	
+	public User( String login, String password,	String email) {
+		
+		this.login = login;
+		this.password = password;
+		this.email = email;
+	}
+
 	public void printUserInfo() {
 		System.out.println("Login: " + getLogin());
 		System.out.println("email: " + getEmail());

@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Task2 {
 	public static void main(String[] args) throws Exception, SecurityException {
 		
-		User user1 = new User();
+		User user1 = new User("Вася", "fjfjjf", "emailfjfj");
 		Class<User> userClass = User.class;
 		
 		Method[] methods = userClass.getMethods();
@@ -21,8 +21,7 @@ public class Task2 {
 		
 		Field[] fields = userClass.getFields();
 		System.out.println(Arrays.toString(fields));
-		
-				
+						
 		Method declaredMethod1 = userClass.getDeclaredMethod("getEmail");
 		System.out.println("declaredMethod1: " + declaredMethod1);
 		
@@ -33,6 +32,7 @@ public class Task2 {
 		Field decField = userClass.getDeclaredField("email");
 		System.out.println("declared field: " + decField);
 		
+		
 		Field[] declaredFields = userClass.getDeclaredFields();
 		System.out.print(" Declared Fields: ");
 		System.out.println(Arrays.toString(declaredFields));
@@ -41,9 +41,23 @@ public class Task2 {
 			Method oneMethod = userClass.getMethod("getLogin");
 			System.out.println("oneMethod: " +oneMethod);
 			
+			decField.setAccessible(true);
+			decField.set(user1, "newEmail");
+			System.out.println(decField.get(user1));
 			
-							
-		} catch (NoSuchMethodException e) {
+			Field decFieldLogin = userClass.getDeclaredField("login");
+			decFieldLogin.set(user1, "Vova");
+			System.out.println(decFieldLogin.get(user1));
+			
+			Field decFieldpassword = userClass.getDeclaredField("password");
+			decFieldLogin.set(user1, "gmgmmgmg");
+			System.out.println(decFieldLogin.get(user1));
+			
+			Method methodForToString = userClass.getDeclaredMethod("toString");
+			methodForToString.setAccessible(true);
+			methodForToString.invoke(user1);
+			
+		} catch (NoSuchMethodException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
